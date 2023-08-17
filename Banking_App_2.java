@@ -19,8 +19,7 @@ public class Banking_App_2 {
         final String ERROR_MSG = String.format("\t%s%s%s\n", COLOR_RED_BOLD, "%s", RESET);
         final String SUCCESS_MSG = String.format("\t%s%s%s\n", COLOR_GREEN_BOLD, "%s", RESET);
 
-        String[] customerIds = new String[0];
-        String[] customerNames = new String[0];
+        String[][] Customers = new String[][];
 
         String screen = DASHBOARD;
 
@@ -60,7 +59,7 @@ public class Banking_App_2 {
 
                 //Account ID
                 
-                System.out.printf("\tNew Account ID: SDB-%05d \n", (customerIds.length + 1));
+                System.out.printf("\tNew Account ID: SDB-%05d \n", (Customers.length + 1));
                 //for(int i = 0; i<customerIds.length; i++){
                // id = String.format("SDB-%05d",(i+1));
                 //customerIds[i] = id;
@@ -98,25 +97,18 @@ public class Banking_App_2 {
 
                     }while(!valid);
 
-                    String[] newCustomerIds = new String[customerIds.length + 1];
-                    String[] newCustomerNames = new String[customerNames.length + 1];
-                    for (int i = 0; i < customerIds.length; i++) {
-                        id = String.format("SDB-%05d",(i+1));
-                        newCustomerIds[i] = customerIds[i];
-                        newCustomerNames[i] = customerNames[i];
+                    String[][] tempCustomers = new String[Customers.length + 1][3];
+                    for (int i = 0; i < Customers.length; i++) {
+                        tempCustomers[i] = Customers[i];
                     }
-                    newCustomerIds[newCustomerIds.length - 1] = id;
-                    newCustomerNames[newCustomerIds.length - 1] = name;
-                    customerIds = newCustomerIds;
-                    customerNames = newCustomerNames;
 
-                    System.out.println();
-                    System.out.printf(SUCCESS_MSG, 
-                    String.format("%s:%s has been saved successfully", id, name));
-                    System.out.print("\tDo you want to continue adding (Y/n)? ");
-                    if (scanner.nextLine().strip().toUpperCase().equals("Y")) continue;
-                    screen = DASHBOARD;
-                    break;
+                   
+                    tempCustomers[tempCustomers.length - 1][0] = id;
+                    tempCustomers[tempCustomers.length - 1][1] = name;
+                    tempCustomers[tempCustomers.length - 1][2] = initial_dep + "";
+
+                    Customers = tempCustomers;
+
 
                 }
             }while(true);
