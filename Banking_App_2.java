@@ -80,6 +80,19 @@ public class Banking_App_2 {
                             }
                         }
                     }while(!valid);
+
+                    do{
+                        valid = true;
+                        System.out.print("\tEnter the Initial Deposit: Rs.");
+                        initial_dep = scanner.nextDouble();
+                        scanner.nextLine();
+                        if(initial_dep < 5000){
+                            System.out.printf(ERROR_MSG,"Insuficiant Initial Bank Balance..Minimum Amount Should be Rs.5000.00");
+                            valid = false;
+                            break;
+                        }
+
+                    }while(!valid);
             
         
     }
