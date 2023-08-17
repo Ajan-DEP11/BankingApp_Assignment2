@@ -33,6 +33,10 @@ public class Banking_App_2 {
         System.out.println("\t" + APP_TITLE );
         System.out.println("-".repeat(45));
 
+        mainloop:
+
+        do{
+
         switch(screen){
             case DASHBOARD: 
                 System.out.println("\t[1]. Open New Account");
@@ -93,7 +97,32 @@ public class Banking_App_2 {
                         }
 
                     }while(!valid);
+
+                    String[] newCustomerIds = new String[customerIds.length + 1];
+                    String[] newCustomerNames = new String[customerNames.length + 1];
+                    for (int i = 0; i < customerIds.length; i++) {
+                        id = String.format("SDB-%05d",(i+1));
+                        newCustomerIds[i] = customerIds[i];
+                        newCustomerNames[i] = customerNames[i];
+                    }
+                    newCustomerIds[newCustomerIds.length - 1] = id;
+                    newCustomerNames[newCustomerIds.length - 1] = name;
+                    customerIds = newCustomerIds;
+                    customerNames = newCustomerNames;
+
+                    System.out.println();
+                    System.out.printf(SUCCESS_MSG, 
+                    String.format("%s:%s has been saved successfully", id, name));
+                    System.out.print("\tDo you want to continue adding (Y/n)? ");
+                    if (scanner.nextLine().strip().toUpperCase().equals("Y")) continue;
+                    screen = DASHBOARD;
+                    break;
+
+                }
+            }while(true);
+        }
+    }
+        
             
         
-    }
-}
+    
