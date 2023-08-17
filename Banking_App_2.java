@@ -48,6 +48,39 @@ public class Banking_App_2 {
                     default: continue;
                 }
                 break;
+            case NEW_ACCOUNT:
+                String id="";
+                String name;
+                boolean valid;
+                double initial_dep;
+
+                //Account ID
+                
+                System.out.printf("\tNew Account ID: SDB-%05d \n", (customerIds.length + 1));
+                //for(int i = 0; i<customerIds.length; i++){
+               // id = String.format("SDB-%05d",(i+1));
+                //customerIds[i] = id;
+
+                //Name validation
+                    do{
+                        valid = true;
+                        System.out.print("\tEnter Customer's Name: ");
+                        name = scanner.nextLine().strip();
+                        if (name.isBlank()){
+                            System.out.printf(ERROR_MSG,"Name can't be Empty");
+                            valid = false;
+                            continue;
+                        }
+                        for (int i = 0; i < name.length(); i++) {
+                            if (!(Character.isLetter(name.charAt(i)) || 
+                                Character.isSpaceChar(name.charAt(i))) ) {
+                                System.out.printf(ERROR_MSG,"Invalid Name");
+                                valid = false;
+                                break;
+                            }
+                        }
+                    }while(!valid);
+            
         
     }
 }
