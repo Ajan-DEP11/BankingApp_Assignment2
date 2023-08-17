@@ -32,6 +32,22 @@ public class Banking_App_2 {
         System.out.println("-".repeat(45));
         System.out.println("\t" + APP_TITLE );
         System.out.println("-".repeat(45));
+
+        switch(screen){
+            case DASHBOARD: 
+                System.out.println("\t[1]. Open New Account");
+                System.out.println("\t[2]. Exit\n");
+                System.out.println("-".repeat(45));
+                System.out.print("\tEnter an option to continue: ");
+                int option = scanner.nextInt();
+                scanner.nextLine();
+
+                switch (option){
+                    case 1: screen = NEW_ACCOUNT; break;
+                    case 2: System.out.println(CLEAR); System.exit(0);
+                    default: continue;
+                }
+                break;
         
     }
 }
