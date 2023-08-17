@@ -19,7 +19,7 @@ public class Banking_App_2 {
         final String ERROR_MSG = String.format("\t%s%s%s\n", COLOR_RED_BOLD, "%s", RESET);
         final String SUCCESS_MSG = String.format("\t%s%s%s\n", COLOR_GREEN_BOLD, "%s", RESET);
 
-        String[][] Customers = new String[][];
+        String[][] Customers = new String[3][];
 
         String screen = DASHBOARD;
 
